@@ -337,6 +337,8 @@ export default function WordCollector() {
 
   const refreshWords = () => {
     setWords(makeEntries(allWords));
+    // スクロールを一番上に戻す
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const toggleSave = (entry) => {
