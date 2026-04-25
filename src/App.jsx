@@ -312,7 +312,6 @@ export default function WordCollector() {
   const [isSavedOpen, setIsSavedOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [isDeleteMode, setIsDeleteMode] = useState(false);
-  const [loadMessage, setLoadMessage] = useState("");
 
   
 
@@ -322,16 +321,10 @@ export default function WordCollector() {
         const usableWords = loadedWords.length > 0 ? loadedWords : FALLBACK_WORDS;
         setAllWords(usableWords);
         setWords(makeEntries(usableWords));
-        setLoadMessage(
-          loadedWords.length > 0
-            ? ""
-            : "プレビュー用の仮単語で表示中です。publicフォルダにtxtを置くと、その単語リストを読み込みます。"
-        );
       })
       .catch(() => {
         setAllWords(FALLBACK_WORDS);
         setWords(makeEntries(FALLBACK_WORDS));
-        setLoadMessage("プレビュー用の仮単語で表示中です。publicフォルダにtxtを置くと、その単語リストを読み込みます。");
       });
   }, []);
 
@@ -386,10 +379,10 @@ export default function WordCollector() {
 
       <section style={styles.body}>
         {words.length === 0 ? (
-          <p style={styles.message}>単語を読み込んでいます。</p>
+          <></>
         ) : (
           <>
-            {loadMessage && <p style={{ ...styles.message, marginBottom: "32px" }}>{loadMessage}</p>}
+            
             <AnimatePresence mode="wait">
               <motion.div
                 key={words[0]?.id}
