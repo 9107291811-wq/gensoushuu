@@ -173,7 +173,7 @@ const styles = {
   },
   words: {
     fontFamily: MINCHO_FONT,
-    fontSize: "40px",
+    fontSize: "clamp(18px, 4vw, 40px)",
     lineHeight: 1.65,
     letterSpacing: "0em",
     wordSpacing: "0em",
